@@ -119,7 +119,7 @@ buildTrans Andalucia_incarcerata
 buildTrans Neovahlkampfia_damariscottae
 buildTrans Ankaliazontas_spiralis_PhF-5__Parabodo_caudatus
 
-#DDBJ
+#DDBJ Transcriptome Shotgun Assembly Sequence Database
 CURRENTDATE=$(date)
 echo "DDBJ accessed $CURRENTDATE" >> accessdate.txt
 curl http://www.goeker.org/mg/scripts/gbk2fas.sed -o gbk2fas.sed
@@ -141,13 +141,17 @@ fetchDDBJ() {
 }
 
 fetchDDBJ GHOA Hemistasia_phaeocysticola #PRJNA549599
-fetchDDBJ GHOB Trypanoplasma_borreli #PRJNA549827
+fetchDDBJ GHOB Trypanoplasma_borreli #Tt-JH PRJNA549827
 fetchDDBJ GJGC Rhabdomonas_costata #PRJNA550357
-fetchDDBJ GFCF Trypanoplasma_borreli
-fetchDDBJ GFCF Euglena_gracilis
-fetchDDBJ GGOE Euglena_longa
-fetchDDBJ GECH Pharyngomonas_kirbyi
-fetchDDBJ HBGD Percolomonas_cosmopolitus
+fetchDDBJ GFCF Trypanoplasma_borreli #PRJNA354696
+fetchDDBJ GDJR Euglena_gracilis #PRJNA289402
+fetchDDBJ GGOE Euglena_longa #PRJNA471257
+fetchDDBJ GECH Pharyngomonas_kirbyi #PRJNA301448
+fetchDDBJ HBGD Percolomonas_cosmopolitus #AE-1 ATCC 50343 PRJEB37117
+fetchDDBJ GEFR Euglena_gracilis_2 #PRJNA298469
+fetchDDBJ LQMU Euglena_gracilis_var_Bacillaris #PRJNA294935
+fetchDDBJ GFCF Trypanoplasma_borreli_DieterSteinhagen #PRJNA354696
+fetchDDBJ HBGD Percolomonas_cosmopolitus_WS #PRJEB37117
 
 #MMETSP
 #https://zenodo.org/record/257410
