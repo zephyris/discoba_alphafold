@@ -28,7 +28,7 @@ buildTrans() {
     cd $1
     cp ../buildTranscriptome.sh buildTranscriptome.sh
     bash buildTranscriptome.sh
-    cp trans.nonred.fasta.transdecoder.pep ../fasta/$1.fasta
+    sed "s/>TRINITY/>$1/g" trans.nonred.fasta.transdecoder.pep > ../fasta/$1.fasta
     rm *.fastq *.fq
     cd ..
   fi
