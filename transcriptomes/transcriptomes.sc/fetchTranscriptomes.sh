@@ -13,13 +13,16 @@ fetchSRARead() {
   for i in $FASTQ
   do
     echo "$i"
-    curl "$i" -O
+    if [ ! -f $i ]
+    then
+      curl "$i" -O
+    fi
   done
   cd ..
 }
 
 buildTrans() {
-  if [ ! -f fasta/$1 ]
+  if [ ! -f fasta/$1.fasta ]
   then
     cd $1
     cp ../buildTranscriptome.sh buildTranscriptome.sh

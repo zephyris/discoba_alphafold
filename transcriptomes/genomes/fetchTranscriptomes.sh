@@ -28,7 +28,7 @@ fetchSRARead() {
 }
 
 buildGenomeTrans() {
-  if [ ! -f fasta/$1 ]
+  if [ ! -f fasta/$1.fasta ]
   then
     cd $1
     cp ../buildGenome.sh buildGenome.sh

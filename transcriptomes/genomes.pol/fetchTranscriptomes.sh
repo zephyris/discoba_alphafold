@@ -13,7 +13,10 @@ fetchSRARead() {
   for i in $FASTQ
   do
     echo "$i"
-    curl "$i" --keepalive-time 10 -O
+    if [ ! -f $i ]
+    then
+      curl "$i" -O
+    fi
   done
 }
 

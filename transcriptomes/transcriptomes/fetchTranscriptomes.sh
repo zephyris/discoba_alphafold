@@ -14,18 +14,24 @@ fetchSRARead() {
   for i in $FASTQ
   do
     echo "$i"
-    curl "$i" -O
+    if [ ! -f $i ]
+    then
+      curl "$i" -O
+    fi
   done
   cd ..
 }
 
 buildTrans() {
-  cd $1
-  cp ../buildTranscriptome.sh buildTranscriptome.sh
-  bash buildTranscriptome.sh
-  cp trans.nonred.fasta.transdecoder.pep ../fasta/$1.fasta
-  rm *.fastq *.fq
-  cd ..
+  if [ ! -f fasta/$1.fasta ]
+  then
+    cd $1
+    cp ../buildTranscriptome.sh buildTranscriptome.sh
+    bash buildTranscriptome.sh
+    cp trans.nonred.fasta.transdecoder.pep ../fasta/$1.fasta
+    rm *.fastq *.fq
+    cd ..
+  fi
 }
 
 #10.1186/s12915-020-0754-1
