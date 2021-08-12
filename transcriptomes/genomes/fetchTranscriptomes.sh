@@ -186,23 +186,22 @@ fetchNCBI() {
   mv $2.fasta fasta/$2.fasta
 }
 
-fetchNCBI GCA_019188245.1_ASM1918824v1 Novymonas_esmeraldas
-fetchNCBI GCA_000331125.1_PhytSerpensv01 Phytomonas_serpens_9T
-fetchNCBI GCA_000482185.1_Ades_1.0 Angomonas_desouzai
-fetchNCBI GCA_000482145.1_Scul_1.0 Strigomonas_culicis
-fetchNCBI GCA_000482125.1_Sgal_1.0 Strigomonas_galati
-fetchNCBI GCA_000482165.1_Sonc_1.0 Strigomonas_oncopelti
-fetchNCBI GCA_016642125.1_ASM1664212v1 Trypanosomatidae_sp_JR-2017a
-fetchNCBI GCA_000482105.1_Caca_1.0 Crithidia_acanthocephali
-fetchNCBI GCA_900240985.1_crithidia-bombi.GDC.2013.v1 Crithidia_bombi
-fetchNCBI GCA_900240875.1_crithidia-expoeki.GDC.2015.v1 Crithidia_expoeki
-fetchNCBI GCA_002216565.1_ASM221656v1 Crithidia_mellificae
-fetchNCBI GCA_000981925.2_Ld_v2 Leishmania_sp_AIIMS-LM-SS-PKDL-LD-974
-fetchNCBI GCA_000635995.1_ASM63599v1 Lotmaria_passim
-fetchNCBI GCA_000482205.1_Hmus_1.0 Herpetomonas_muscarum
-fetchNCBI GCA_014466975.1_ASM1446697v1 Leishmania_chagasi
-fetchNCBI GCA_003664525.1_ASM366452v1 Leishmania_guyanensis
-fetchNCBI GCA_000981925.2_Ld_v2 Leishmania_sp_AIIMS-LM-SS-PKDL-LD-974
-fetchNCBI GCA_003664395.1_CDC_Llain_216-34_v1 Leishmania_lainsoni
-fetchNCBI GCA_018683835.1_OSU_Pdea_TCC258_v1 Porcisia_deanei
-fetchNCBI GCA_000333855.2_Endotrypanum_monterogeii-LV88-1.0.3 Endotrypanum_monterogeii
+fetchNCBI GCA_019188245.1_ASM1918824v1 Novymonas_esmeraldas #PRJNA681813
+fetchNCBI GCA_000331125.1_PhytSerpensv01 Phytomonas_serpens_9T #PRJNA80957
+fetchNCBI GCA_000482185.1_Ades_1.0 Angomonas_desouzai #PRJNA203515
+fetchNCBI GCA_000482145.1_Scul_1.0 Strigomonas_culicis #PRJNA203517
+fetchNCBI GCA_000482125.1_Sgal_1.0 Strigomonas_galati #	PRJNA203516
+fetchNCBI GCA_000482165.1_Sonc_1.0 Strigomonas_oncopelti #PRJNA203518
+fetchNCBI GCA_016642125.1_ASM1664212v1 Trypanosomatidae_sp_JR-2017a #PRJNA398352
+fetchNCBI GCA_000482105.1_Caca_1.0 Crithidia_acanthocephali #PRJNA203520
+fetchNCBI GCA_900240985.1_crithidia-bombi.GDC.2013.v1 Crithidia_bombi #PRJEB21108
+fetchNCBI GCA_900240875.1_crithidia-expoeki.GDC.2015.v1 Crithidia_expoeki #PRJEB21109
+fetchNCBI GCA_002216565.1_ASM221656v1 Crithidia_mellificae #PRJNA319526
+fetchNCBI GCA_000981925.2_Ld_v2 Leishmania_sp_AIIMS-LM-SS-PKDL-LD-974 #PRJNA280137
+fetchNCBI GCA_000635995.1_ASM63599v1 Lotmaria_passim #PRJNA78249
+fetchNCBI GCA_000482205.1_Hmus_1.0 Herpetomonas_muscarum #PRJNA203519
+fetchNCBI GCA_014466975.1_ASM1446697v1 Leishmania_chagasi #PRJNA523126
+fetchNCBI GCA_003664525.1_ASM366452v1 Leishmania_guyanensis #PRJNA484340
+fetchNCBI GCA_003664395.1_CDC_Llain_216-34_v1 Leishmania_lainsoni #PRJNA484340
+fetchNCBI GCA_018683835.1_OSU_Pdea_TCC258_v1 Porcisia_deanei #PRJNA680237
+fetchNCBI GCA_000333855.2_Endotrypanum_monterogeii-LV88-1.0.3 Endotrypanum_monterogeii #PRJNA165953
