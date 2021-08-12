@@ -247,3 +247,13 @@ polishPred Trypanosoma_brucei_TREU927 SRR5307573 Dodola_943
 #PRJNA477427
 #PRJNA377640
 polishPred Trypanosoma_brucei_TREU927 SRR5307576 BoTat
+
+#Clean sequences
+cd fasta
+for fasta in *.fasta; do
+  cut -d " " -f1 $fasta | sed "s/*//g" | sed -e '/^[^>]/s/[^GALMFWKQESPVICYHRNDTgalmfwkqespvicyhrndt]/X/g' > ../fastaTidy/$fasta
+done
+cd ..
+
+cat fastaTidy/*.fasta > variants.fasta
+nodejs uniqueTrans.js variants.fasta > variantsUnique.fasta
