@@ -29,11 +29,19 @@ polishPred() {
     cd $1_$3
     pwd
     fetchSRARead $2
-    cp ../polishPred.sh polishPred.sh
+    if [ -f *_2.fastq.gz ]
+    then
+      #If reverse reads are present
+      cp ../polishPred.sh polishPred.sh
+    else
+      #Otherwise use unpaired polishing
+      cp ../polishPredU.sh polishPred.sh
+    fi
     bash polishPred.sh
     nodejs ../changedTrans.js ref.fa cds.pol.fa $3 > pep.fa
     if [ -s pep.fa ]
     then
+      #Only continue if pep.fa is not empty
       cp pep.fa ../fasta/$1_$3.fasta
       rm f.fq r.fq ali.bam ali.bam.bai ref.fa*
     fi
@@ -58,7 +66,7 @@ echo "TriTrypDB version $KINETOVERSION" >> accessdate.txt
 fetchTriTrypDB TcongolenseIL3000_2019 $KINETOVERSION Trypanosoma_congolense_IL3000-2019
 fetchTriTrypDB TvivaxY486 $KINETOVERSION Trypanosoma_vivax_Y486
 fetchTriTrypDB TbruceigambienseDAL972 $KINETOVERSION Trypanosoma_gambiense_DAL972
-fetchTriTrypDB TbruceiTREU927 $KINETOVERSION Trypanosoma_brucei_TREU927
+fetchTriTrypDB TbruceiTREU927 $KINETOVERSION Trypanosoma_brucei_TREU927 #Also used for Trypanosoma equiperdum
 fetchTriTrypDB TevansiSTIB805 $KINETOVERSION Trypanosoma_evansi_STIB805
 
 #Congolense
