@@ -1,12 +1,11 @@
 rm accessdate.txt
 rm list.csv
-echo "type,ID,species" > list.csv
 rm -r fastaTidy
 mkdir fasta
 mkdir fastaTidy
 
 fetchSRARead() {
-  echo "SRA,$2,$1,transcriptome assembly and transdecoder" >> list.csv
+  echo "transcriptome,NCBI SRA,$2,$1,$3,trinity transcriptome assembly and transdecoder" >> list.csv
   mkdir $2
   cd $2
   FASTQ=$(curl "https://www.ebi.ac.uk/ena/portal/api/filereport?accession="$1"&result=read_run&fields=fastq_ftp&format=tsv&download=true" | tail -n 1 | cut -d$'\t' -f2- | sed "s/;/ /g")
@@ -36,58 +35,58 @@ buildTrans() {
 
 #10.1186/s12915-020-0754-1
 #PRJNA549754 Prokinetoplastina
-fetchSRARead SRR9613186 Prokinetoplastina_PhM-4
-fetchSRARead SRR9613187 Prokinetoplastina_PhF-6
+fetchSRARead SRR9613186 Prokinetoplastina_PhM-4 PRJNA549754
+fetchSRARead SRR9613187 Prokinetoplastina_PhF-6 PRJNA549754
 #PRJNA550027 Rhynchopus humris
-fetchSRARead SRR9588121 Rhynchopus_humris
-fetchSRARead SRR9588122 Rhynchopus_humris
-fetchSRARead SRR9588122 Rhynchopus_humris
+fetchSRARead SRR9588121 Rhynchopus_humris PRJNA550027
+fetchSRARead SRR9588122 Rhynchopus_humris PRJNA550027
+fetchSRARead SRR9588122 Rhynchopus_humris PRJNA550027
 #PRJNA550027 Sulcionema specki
-fetchSRARead SRR9334250 Sulcionema_specki
-fetchSRARead SRR9334251 Sulcionema_specki
+fetchSRARead SRR9334250 Sulcionema_specki PRJNA550027
+fetchSRARead SRR9334251 Sulcionema_specki PRJNA550027
 
 #10.1266/ggs.16-00056
 #PRJNA344936 Azumiobodo hoyamushi
-fetchSRARead SRR10586159 Azumiobodo_hoyamushi
+fetchSRARead SRR10586159 Azumiobodo_hoyamushi PRJNA344936
 
 #PRJNA525750
-fetchSRARead SRR8676451 Namystynia_karyoxenos
-fetchSRARead SRR8676452 Lacrimia_lanifica
-fetchSRARead SRR8676453 Diplonema_japonicum
-fetchSRARead SRR8676455 Artemidia_motanka
+fetchSRARead SRR8676451 Namystynia_karyoxenos PRJNA525750
+fetchSRARead SRR8676452 Lacrimia_lanifica PRJNA525750
+fetchSRARead SRR8676453 Diplonema_japonicum PRJNA525750
+fetchSRARead SRR8676455 Artemidia_motanka PRJNA525750
 
 #PRJNA392339
-fetchSRARead SRR5998375 Diplonema_sp.2
-fetchSRARead SRR5998378 Diplonema_ambulator
-fetchSRARead SRR5998379 Diplonema_ambulator
-fetchSRARead SRR5998383 Rhynchopus_euleeides
+fetchSRARead SRR5998375 Diplonema_sp.2 PRJNA392339
+fetchSRARead SRR5998378 Diplonema_ambulator PRJNA392339
+fetchSRARead SRR5998379 Diplonema_ambulator PRJNA392339
+fetchSRARead SRR5998383 Rhynchopus_euleeides PRJNA392339
 
 #PRJEB30797
-fetchSRARead ERR3764909 Willaertia_magna
+fetchSRARead ERR3764909 Willaertia_magna PRJEB30797
 
 #PRJNA681813
-fetchSRARead SRR13174014 Novymonas_esmeraldas
+fetchSRARead SRR13174014 Novymonas_esmeraldas PRJNA681813
 
 #PRJEB15491
-fetchSRARead ERR1655129 Phytomonas_francai
-fetchSRARead ERR1655128 Phytomonas_francai
+fetchSRARead ERR1655129 Phytomonas_francai PRJEB15491
+fetchSRARead ERR1655128 Phytomonas_francai PRJEB15491
 
 #PRJNA675748
-fetchSRARead SRR13015660 Vickermania_ingenoplastis_CP021
+fetchSRARead SRR13015660 Vickermania_ingenoplastis_CP021 PRJNA675748
 
 #SAMN06163843
-fetchSRARead SRR5120186 Trypanosoma_carassii
+fetchSRARead SRR5120186 Trypanosoma_carassii SAMN06163843
 
 #PRJNA680239
-#fetchSRARead SRR13125478 Porcisia_hertigi
+fetchSRARead SRR13125478 Porcisia_hertigi PRJNA680239
 
 #PRJNA680237
-fetchSRARead SRR13125062 Porcisia_deanei
+fetchSRARead SRR13125062 Porcisia_deanei PRJNA680237
 
 #PRJNA611063
-fetchSRARead SRR11278472 Crithidia_thermophila
-fetchSRARead SRR11278473 Crithidia_thermophila
-fetchSRARead SRR11278474 Crithidia_thermophila
+fetchSRARead SRR11278472 Crithidia_thermophila PRJNA611063
+fetchSRARead SRR11278473 Crithidia_thermophila PRJNA611063
+fetchSRARead SRR11278474 Crithidia_thermophila PRJNA611063
 
 buildTrans Prokinetoplastina_PhF-6
 buildTrans Prokinetoplastina_PhM-4
@@ -106,20 +105,20 @@ buildTrans Novymonas_esmeraldas
 buildTrans Phytomonas_francai
 buildTrans Vickermania_ingenoplastis_CP021
 buildTrans Trypanosoma_carassii
-#buildTrans Porcisia_hertigi
+buildTrans Porcisia_hertigi
 buildTrans Porcisia_deanei
 buildTrans Crithidia_thermophila
 
 #Mixed cultures/metagenomes
 #PRJNA297797
-fetchSRARead SRR2566811 Andalucia_incarcerata
+fetchSRARead SRR2566811 Andalucia_incarcerata PRJNA297797
 
 #PRJNA549687
-fetchSRARead SRR9328295 Neovahlkampfia_damariscottae
-fetchSRARead SRR9328296 Neovahlkampfia_damariscottae
+fetchSRARead SRR9328295 Neovahlkampfia_damariscottae PRJNA549687
+fetchSRARead SRR9328296 Neovahlkampfia_damariscottae PRJNA549687
 
 #PRJNA549754
-fetchSRARead SRR13394430 Ankaliazontas_spiralis_PhF-5__Parabodo_caudatus
+fetchSRARead SRR13394430 Ankaliazontas_spiralis_PhF-5__Parabodo_caudatus PRJNA549754
 
 buildTrans Andalucia_incarcerata
 buildTrans Neovahlkampfia_damariscottae
@@ -134,7 +133,7 @@ curl http://www.goeker.org/mg/scripts/gbk2fas.sed -o gbk2fas.sed
 #git clone https://github.com/TransDecoder/TransDecoder
 
 fetchDDBJ() {
-  echo "DDBJ transcriptome,$1,$2,transdecoder" >> list.csv
+  echo "transcriptome,NCBI TSA,$1,$2,$3,transdecoder" >> list.csv
   curl ftp://ftp.ddbj.nig.ac.jp/ddbj_database/tsa/${1:0:2}/$1.gz -o $2.gz
   gzip -d $2.gz
   ./gbk2fas.sed $2 > $2.fasta
@@ -146,18 +145,18 @@ fetchDDBJ() {
   rm pipeliner.*
 }
 
-fetchDDBJ GHOA Hemistasia_phaeocysticola #PRJNA549599
-fetchDDBJ GHOB Trypanoplasma_borreli #Tt-JH PRJNA549827
-fetchDDBJ GJGC Rhabdomonas_costata #PRJNA550357
-fetchDDBJ GFCF Trypanoplasma_borreli #PRJNA354696
-fetchDDBJ GDJR Euglena_gracilis #PRJNA289402
-fetchDDBJ GGOE Euglena_longa #PRJNA471257
-fetchDDBJ GECH Pharyngomonas_kirbyi #PRJNA301448
-fetchDDBJ HBGD Percolomonas_cosmopolitus #AE-1 ATCC 50343 PRJEB37117
-fetchDDBJ GEFR Euglena_gracilis_2 #PRJNA298469
-fetchDDBJ LQMU Euglena_gracilis_var_Bacillaris #PRJNA294935
-fetchDDBJ GFCF Trypanoplasma_borreli_DieterSteinhagen #PRJNA354696
-fetchDDBJ HBGD Percolomonas_cosmopolitus_WS #PRJEB37117
+fetchDDBJ GHOA Hemistasia_phaeocysticola PRJNA549599
+fetchDDBJ GHOB Trypanoplasma_borreli PRJNA549827 #Tt-JH 
+fetchDDBJ GJGC Rhabdomonas_costata PRJNA550357
+fetchDDBJ GFCF Trypanoplasma_borreli PRJNA354696
+fetchDDBJ GDJR Euglena_gracilis PRJNA289402
+fetchDDBJ GGOE Euglena_longa PRJNA471257
+fetchDDBJ GECH Pharyngomonas_kirbyi PRJNA301448
+fetchDDBJ HBGD Percolomonas_cosmopolitus PRJEB37117 #AE-1 ATCC 50343 
+fetchDDBJ GEFR Euglena_gracilis_2 PRJNA298469
+fetchDDBJ LQMU Euglena_gracilis_var_Bacillaris PRJNA294935
+fetchDDBJ GFCF Trypanoplasma_borreli_DieterSteinhagen PRJNA354696
+fetchDDBJ HBGD Percolomonas_cosmopolitus_WS PRJEB37117
 
 #MMETSP
 #https://zenodo.org/record/257410
@@ -167,22 +166,22 @@ curl https://zenodo.org/record/257410/files/mmetsp_dib_trinity2.2.0_pep_zenodo.t
 tar -xvf mmetsp.tar.gz
 
 fetchMMETSP() {
-  echo "MMETSP transcriptome,$1,$2,provided by MMETSP" >> list.csv
+  echo "transcriptome,MMETSP,$1,$2,$3,provided by MMETSP" >> list.csv
   tar -xvf mmetsp.tar.gz mmetsp_transdecoder/$1.trinity_out_2.2.0.Trinity.pep.fasta.tar.gz
   tar -xvf mmetsp_transdecoder/$1.trinity_out_2.2.0.Trinity.pep.fasta.tar.gz
   sed "s/$1-doi:10.5281\/zenodo.249982-//g" -i $1.trinity_out_2.2.0.Trinity.pep.fasta
   mv $1.trinity_out_2.2.0.Trinity.pep.fasta fasta/$2.fasta
 }
 
-fetchMMETSP MMETSP1114 Neobodo_designis
-fetchMMETSP MMETSP0039 Eutreptiella_gymnastica
+fetchMMETSP MMETSP1114 Neobodo_designis PRJNA248394
+fetchMMETSP MMETSP0039 Eutreptiella_gymnastica PRJNA248394
 
 #NCBI
 CURRENTDATE=$(date)
 echo "NCBI accessed $CURRENTDATE" >> accessdate.txt
 
 fetchNCBI() {
-  echo "NCBI genome,$1,$2,provided by NCBI" >> list.csv
+  echo "transcriptome,NCBI genome,$1,$2,$3,provided by NCBI" >> list.csv
   URL="https://ftp.ncbi.nlm.nih.gov/genomes/all/"${1:0:3}/${1:4:3}/${1:7:3}/${1:10:3}/$1/$1"_protein.faa.gz"
   echo $URL
   curl $URL -o $2.fasta.gz
@@ -190,27 +189,27 @@ fetchNCBI() {
   mv $2.fasta fasta/
 }
 
-fetchNCBI GCA_001460835.1_BSAL Bodo_saltans #PRJEB10421
-fetchNCBI GCA_001235845.1_ASM123584v1 Perkinsela_sp #PRJNA194468
-fetchNCBI GCA_008403515.1_ASM840351v1 Naegleria_fowleri #PRJNA541227
-fetchNCBI GCF_000004985.1_V1.0 Naegleria_gruberi #PRJNA14010
-fetchNCBI GCA_009859145.1_Andalucia_godoyi_V16 Andalucia_godoyi #PRJNA559352
-fetchNCBI GCA_003324165.2_Nlova_2.1 Naegleria_lovaniensis #PRJNA445795
-fetchNCBI GCA_001235845.1_ASM123584v1 Perkinsela_sp_CCAP-1560-4 #PRJNA194468
-fetchNCBI GCF_003719485.1_ASM371948v1 Trypanosoma_conorhini #PRJNA315397
-fetchNCBI GCA_000582765.1_AKH_PRJEB1535_v1 Phytomonas_sp_isolate_EM1 #PRJEB1535
-fetchNCBI GCA_001457755.2_Trypanosoma_equiperdum_OVI_V2 Trypanosoma_equiperdum #PRJEB11407
-fetchNCBI GCA_017916335.1_LU_Lori_1.0 Leishmania_orientalis #PRJNA691532
-fetchNCBI GCA_017916325.1_LU_Lmar_1.0 Leishmania_martiniquensis #PRJNA691531
-fetchNCBI GCA_017916305.1_LU_Lenr_1.0 Leishmania_enriettii #PRJNA691534
-fetchNCBI GCA_017918235.1_LU_Pher_1.0 Porcisia_hertigi #PRJNA691541
+fetchNCBI GCA_001460835.1_BSAL Bodo_saltans PRJEB10421
+fetchNCBI GCA_001235845.1_ASM123584v1 Perkinsela_sp PRJNA194468
+fetchNCBI GCA_008403515.1_ASM840351v1 Naegleria_fowleri PRJNA541227
+fetchNCBI GCF_000004985.1_V1.0 Naegleria_gruberi PRJNA14010
+fetchNCBI GCA_009859145.1_Andalucia_godoyi_V16 Andalucia_godoyi PRJNA559352
+fetchNCBI GCA_003324165.2_Nlova_2.1 Naegleria_lovaniensis PRJNA445795
+fetchNCBI GCA_001235845.1_ASM123584v1 Perkinsela_sp_CCAP-1560-4 PRJNA194468
+fetchNCBI GCF_003719485.1_ASM371948v1 Trypanosoma_conorhini PRJNA315397
+fetchNCBI GCA_000582765.1_AKH_PRJEB1535_v1 Phytomonas_sp_isolate_EM1 PRJEB1535
+fetchNCBI GCA_001457755.2_Trypanosoma_equiperdum_OVI_V2 Trypanosoma_equiperdum PRJEB11407
+fetchNCBI GCA_017916335.1_LU_Lori_1.0 Leishmania_orientalis PRJNA691532
+fetchNCBI GCA_017916325.1_LU_Lmar_1.0 Leishmania_martiniquensis PRJNA691531
+fetchNCBI GCA_017916305.1_LU_Lenr_1.0 Leishmania_enriettii PRJNA691534
+fetchNCBI GCA_017918235.1_LU_Pher_1.0 Porcisia_hertigi PRJNA691541
 
 #TriTrypDB
 KINETOVERSION=$(curl https://tritrypdb.org/common/downloads/Current_Release/Build_number)
 echo "TriTrypDB version $KINETOVERSION" >> accessdate.txt
 
 fetchTriTrypDB() {
-  echo "TriTrypDB genome,$1,$3,provided by TriTrypDB" >> list.csv
+  echo "transcriptome,TriTrypDB genome,$1,$3,,provided by TriTrypDB" >> list.csv
   URL="https://tritrypdb.org/common/downloads/release-"$2"/"$1"/fasta/data/TriTrypDB-"$2"_"$1"_AnnotatedProteins.fasta"
   echo $URL
   curl $URL -o fasta/$3.fasta

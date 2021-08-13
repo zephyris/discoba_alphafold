@@ -30,6 +30,13 @@ cp genomes/fasta/*.fasta fasta/
 cp transcriptomes/fasta/*.fasta fasta/
 cp transcriptomes.sc/fasta/*.fasta fasta/
 
+#Collate sources
+echo "type,database,predicted transcriptome name,database accession,bioproject accession,protein sequence gather strategy" > list.csv
+cat genomes/list.csv >> list.csv
+cat transcriptomes/list.csv >> list.csv
+cat transcriptomes.sc/list.csv >> list.csv
+cat genomes.pol/list.csv >> list.csv
+
 #Clean sequences
 cd fasta
 for fasta in *.fasta; do

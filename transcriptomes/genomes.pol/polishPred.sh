@@ -1,3 +1,5 @@
+#For paired end reads
+
 CPUS=10
 MEM=6G
 
