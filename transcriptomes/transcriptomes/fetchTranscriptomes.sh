@@ -75,7 +75,7 @@ fetchSRARead ERR1655128 Phytomonas_francai PRJEB15491
 fetchSRARead SRR13015660 Vickermania_ingenoplastis_CP021 PRJNA675748
 
 #SAMN06163843
-fetchSRARead SRR5120186 Trypanosoma_carassii SAMN06163843
+fetchSRARead SRR5120186 Trypanosoma_carassii PRJNA358054
 
 #PRJNA680239
 fetchSRARead SRR13125478 Porcisia_hertigi PRJNA680239
@@ -133,7 +133,7 @@ curl http://www.goeker.org/mg/scripts/gbk2fas.sed -o gbk2fas.sed
 #git clone https://github.com/TransDecoder/TransDecoder
 
 fetchDDBJ() {
-  echo "transcriptome,NCBI TSA,$1,$2,$3,transdecoder" >> list.csv
+  echo "transcriptome,NCBI TSA,$1,$3,$2,transdecoder" >> list.csv
   curl ftp://ftp.ddbj.nig.ac.jp/ddbj_database/tsa/${1:0:2}/$1.gz -o $2.gz
   gzip -d $2.gz
   ./gbk2fas.sed $2 > $2.fasta
@@ -166,7 +166,7 @@ curl https://zenodo.org/record/257410/files/mmetsp_dib_trinity2.2.0_pep_zenodo.t
 tar -xvf mmetsp.tar.gz
 
 fetchMMETSP() {
-  echo "transcriptome,MMETSP,$1,$2,$3,provided by MMETSP" >> list.csv
+  echo "transcriptome,MMETSP,$1,$3,$2,provided by MMETSP" >> list.csv
   tar -xvf mmetsp.tar.gz mmetsp_transdecoder/$1.trinity_out_2.2.0.Trinity.pep.fasta.tar.gz
   tar -xvf mmetsp_transdecoder/$1.trinity_out_2.2.0.Trinity.pep.fasta.tar.gz
   sed "s/$1-doi:10.5281\/zenodo.249982-//g" -i $1.trinity_out_2.2.0.Trinity.pep.fasta
@@ -181,7 +181,7 @@ CURRENTDATE=$(date)
 echo "NCBI accessed $CURRENTDATE" >> accessdate.txt
 
 fetchNCBI() {
-  echo "transcriptome,NCBI genome,$1,$2,$3,provided by NCBI" >> list.csv
+  echo "transcriptome,NCBI genome,$1,$3,$2,provided by NCBI" >> list.csv
   URL="https://ftp.ncbi.nlm.nih.gov/genomes/all/"${1:0:3}/${1:4:3}/${1:7:3}/${1:10:3}/$1/$1"_protein.faa.gz"
   echo $URL
   curl $URL -o $2.fasta.gz
@@ -209,7 +209,7 @@ KINETOVERSION=$(curl https://tritrypdb.org/common/downloads/Current_Release/Buil
 echo "TriTrypDB version $KINETOVERSION" >> accessdate.txt
 
 fetchTriTrypDB() {
-  echo "transcriptome,TriTrypDB genome,$1,$3,,provided by TriTrypDB" >> list.csv
+  echo "transcriptome,TriTrypDB genome,$3,$1,,provided by TriTrypDB" >> list.csv
   URL="https://tritrypdb.org/common/downloads/release-"$2"/"$1"/fasta/data/TriTrypDB-"$2"_"$1"_AnnotatedProteins.fasta"
   echo $URL
   curl $URL -o fasta/$3.fasta
