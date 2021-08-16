@@ -11,9 +11,9 @@ TRIMGALORE=$CURDIR/../TrimGalore-0.6.0/trim_galore
 #Extract reads
 echo "== Extract & concatenate reads =="
 gzip -d *.fastq.gz
-#Concatenate to single F/R readsets
-cat *_1.fastq > F.fq
-cat *_2.fastq > R.fq
+#Concatenate to single F/R readsets, taking only first 50 million reads
+cat *_1.fastq | head -n 200000000 > F.fq
+cat *_2.fastq | head -n 200000000 > R.fq
 
 #Use rcorrector for single cell genomes
 echo "== Read correction and trimming =="
