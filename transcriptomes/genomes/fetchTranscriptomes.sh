@@ -65,6 +65,7 @@ fetchSRARead SRR5973231 Kinetoplastid_LTCP15171 PRJNA398352
 fetchSRARead SRR5973230 Kinetoplastid_LVH60 PRJNA398352
 fetchSRARead SRR5973229 Kinetoplastid_LH23 PRJNA398352
 fetchSRARead SRR5973228 Kinetoplastid_LVH60a PRJNA398352
+fetchSRARead SRR5973233 Kinetoplastid_HUUFS14 PRJNA398352
 
 #PRJNA543408
 fetchSRARead SRR9090237 Trypanosomatidae_sp_Fi-14 PRJNA543408
@@ -105,6 +106,7 @@ buildGenomeTrans Kinetoplastid_LTCP15171
 buildGenomeTrans Kinetoplastid_LVH60
 buildGenomeTrans Kinetoplastid_LH23
 buildGenomeTrans Kinetoplastid_LVH60a
+buildGenomeTrans Kinetoplastid_HUUFS14
 buildGenomeTrans Trypanosomatidae_sp_Fi-14
 buildGenomeTrans Trypanosoma_caninum
 buildGenomeTrans Trypanosoma_cruzi_JR_cl4
@@ -212,3 +214,35 @@ fetchNCBI GCA_003664525.1_ASM366452v1 Leishmania_guyanensis PRJNA484340
 fetchNCBI GCA_003664395.1_CDC_Llain_216-34_v1 Leishmania_lainsoni PRJNA484340
 fetchNCBI GCA_018683835.1_OSU_Pdea_TCC258_v1 Porcisia_deanei PRJNA680237
 fetchNCBI GCA_000333855.2_Endotrypanum_monterogeii-LV88-1.0.3 Endotrypanum_monterogeii PRJNA165953
+
+#TriTrypDB
+KINETOVERSION=$(curl https://tritrypdb.org/common/downloads/Current_Release/Build_number)
+echo "TriTrypDB version $KINETOVERSION" >> accessdate.txt
+
+fetchTriTrypDB() {
+  echo "transcriptome,TriTrypDB genome,$3,$1,,orfs >=100aa" >> list.csv
+  URL="https://tritrypdb.org/common/downloads/release-"$2"/"$1"/fasta/data/TriTrypDB-"$2"_"$1"_Genome.fasta"
+  echo $URL
+  curl $URL -o $3.genome.fasta
+  nodejs identifyOrfs.js $3.genome.fasta > $3.fasta
+  mv $3.genome.fasta genomeFasta/$3.fasta
+  mv $3.fasta fasta/$3.fasta
+}
+
+fetchTriTrypDB TcruziYcl6 $KINETOVERSION Trypanosoma_cruzi_Ycl6
+fetchTriTrypDB TcruziYcl4 $KINETOVERSION Trypanosoma_cruzi_Ycl4
+fetchTriTrypDB TcruziYcl2 $KINETOVERSION Trypanosoma_cruzi_Ycl2
+fetchTriTrypDB TcruziY $KINETOVERSION Trypanosoma_cruzi_Y
+fetchTriTrypDB TcruziS92a $KINETOVERSION Trypanosoma_cruzi_S92a
+fetchTriTrypDB TcruziS44a $KINETOVERSION Trypanosoma_cruzi_S44a
+fetchTriTrypDB TcruziS23b $KINETOVERSION Trypanosoma_cruzi_S23b
+fetchTriTrypDB TcruziS162a $KINETOVERSION Trypanosoma_cruzi_S162a
+fetchTriTrypDB TcruziS154a $KINETOVERSION Trypanosoma_cruzi_S154a
+fetchTriTrypDB TcruziS15 $KINETOVERSION Trypanosoma_cruzi_S15
+fetchTriTrypDB TcruziS11 $KINETOVERSION Trypanosoma_cruzi_S11
+fetchTriTrypDB Tcruzi231 $KINETOVERSION Trypanosoma_cruzi_231
+fetchTriTrypDB TcruziBug2148 $KINETOVERSION Trypanosoma_cruzi_Bug2148
+fetchTriTrypDB TcruziEsmeraldo $KINETOVERSION Trypanosoma_cruzi_Esmeraldo
+fetchTriTrypDB TcruziJRcl4 $KINETOVERSION Trypanosoma_cruzi_JRcl4
+fetchTriTrypDB TcruziTulacl2 $KINETOVERSION Trypanosoma_cruzi_Tulacl2
+fetchTriTrypDB LdonovaniBHU1220 $KINETOVERSION Leishmania_donovani_BHU1220
