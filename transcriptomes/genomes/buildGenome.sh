@@ -45,14 +45,15 @@ $VELVET/velvetg asm -cov_cutoff auto -min_contig_lgth 500
 
 ##Align reads to the genome to get key stats
 #echo "== Evaluating assembly =="
+#cp asm/contigs.fasta > gen.fa
 #bwa index gen.fa
-#bwa mem ref.fa f.fq r.fq -t $CPUS | samtools sort -o ali.bam -@ $CPUS -m $MEM
+#bwa mem gen.fa f.fa r.fa -t $CPUS | samtools sort -o ali.bam -@ $CPUS -m $MEM
 #samtools index ali.bam -@ $CPUS
 #INSERTSIZE=$(samtools stats ali.bam | grep "insert size average" | awk -F'\t' '{print $3}')
 #MEANCOV=$(samtools depth -a ali.bam | awk '{sum+=$3} END {print sum/NR}')
+#echo $INSERTSIZE $MEANCOV
 #rm ali*
 #rm gen.fa*
-#echo $INSERTSIZE $MEANCOV
 #echo "== Improve assembly =="
 #$VELVET/velvetg asm -cov_cutoff auto -min_contig_lgth 500 -exp_cov $MEANCOV -ins_length $INSERTSIZE
 
