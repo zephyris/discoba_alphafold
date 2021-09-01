@@ -107,6 +107,7 @@ buildGenomeTrans Kinetoplastid_LVH60a
 buildGenomeTrans Kinetoplastid_HUUFS14
 buildGenomeTrans Trypanosomatidae_sp_Fi-14
 buildGenomeTrans Trypanosoma_caninum
+buildGenomeTrans Trypanosoma_cruzi_ATCC_30160
 buildGenomeTrans Trypanosoma_cruzi_JR_cl4
 buildGenomeTrans Trypanosoma_cruzi_TRYCC_1522
 buildGenomeTrans Trypanosoma_cruzi_Tula_cl2
@@ -193,6 +194,7 @@ fetchNCBI() {
   mv $2.fasta fasta/$2.fasta
 }
 
+#Commented out lines are duplicates of transcriptomes
 fetchNCBI GCA_019188245.1_ASM1918824v1 Novymonas_esmeraldas PRJNA681813
 fetchNCBI GCA_000331125.1_PhytSerpensv01 Phytomonas_serpens_9T PRJNA80957
 fetchNCBI GCA_000482185.1_Ades_1.0 Angomonas_desouzai PRJNA203515
@@ -210,7 +212,7 @@ fetchNCBI GCA_000482205.1_Hmus_1.0 Herpetomonas_muscarum PRJNA203519
 fetchNCBI GCA_014466975.1_ASM1446697v1 Leishmania_chagasi PRJNA523126
 fetchNCBI GCA_003664525.1_ASM366452v1 Leishmania_guyanensis PRJNA484340
 fetchNCBI GCA_003664395.1_CDC_Llain_216-34_v1 Leishmania_lainsoni PRJNA484340
-fetchNCBI GCA_018683835.1_OSU_Pdea_TCC258_v1 Porcisia_deanei PRJNA680237
+#fetchNCBI GCA_018683835.1_OSU_Pdea_TCC258_v1 Porcisia_deanei PRJNA680237
 fetchNCBI GCA_000333855.2_Endotrypanum_monterogeii-LV88-1.0.3 Endotrypanum_monterogeii PRJNA165953
 
 #TriTrypDB

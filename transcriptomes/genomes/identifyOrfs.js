@@ -9,7 +9,7 @@ var seqs=[];
 var data="\n"+fs.readFileSync(path.resolve(process.cwd(), process.argv[2])).toString();
 data=data.replace(/\r/gi, "").split("\n>");
 for (var i=1; i<data.length; i++) {
-	name=data[i].substring(0, data[i].indexOf("\n"));
+	var name=data[i].substring(0, data[i].indexOf("\n"));
 	if (name.indexOf(" ")!=-1) name=name.substring(0, name.indexOf(" "));
 	seqs[name]=data[i].substring(data[i].indexOf("\n")).replace(/\n/gi, "").toUpperCase();
 }

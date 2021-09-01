@@ -78,7 +78,7 @@ fetchSRARead SRR13015660 Vickermania_ingenoplastis_CP021 PRJNA675748
 fetchSRARead SRR5120186 Trypanosoma_carassii PRJNA358054
 
 #PRJNA680239
-fetchSRARead SRR13125478 Porcisia_hertigi PRJNA680239
+#fetchSRARead SRR13125478 Porcisia_hertigi PRJNA680239
 
 #PRJNA680237
 fetchSRARead SRR13125062 Porcisia_deanei PRJNA680237
@@ -93,19 +93,19 @@ buildTrans Prokinetoplastina_PhM-4
 buildTrans Rhynchopus_humris
 buildTrans Sulcionema_specki
 buildTrans Azumiobodo_hoyamushi
-buildTrans Namystynia_karyoxenos #
+buildTrans Namystynia_karyoxenos
 buildTrans Lacrimia_lanifica
 buildTrans Diplonema_japonicum
 buildTrans Artemidia_motanka
 buildTrans Diplonema_sp.2
 buildTrans Diplonema_ambulator
 buildTrans Rhynchopus_euleeides
-buildTrans Willaertia_magna #
+buildTrans Willaertia_magna
 buildTrans Novymonas_esmeraldas
 buildTrans Phytomonas_francai
 buildTrans Vickermania_ingenoplastis_CP021
 buildTrans Trypanosoma_carassii
-buildTrans Porcisia_hertigi
+#buildTrans Porcisia_hertigi
 buildTrans Porcisia_deanei
 buildTrans Crithidia_thermophila
 
