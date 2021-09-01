@@ -1,7 +1,5 @@
 rm accessdate.txt
 rm list.csv
-rm -r fasta
-rm -r fastaTidy
 mkdir genomeFasta
 mkdir fasta
 mkdir fastaTidy

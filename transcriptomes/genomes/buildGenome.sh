@@ -45,7 +45,7 @@ $VELVET/velvetg asm -cov_cutoff auto -min_contig_lgth 500
 
 ##Align reads to the genome to get key stats
 #echo "== Evaluating assembly =="
-#cp asm/contigs.fasta > gen.fa
+#cp asm/contigs.fasta gen.fa
 #bwa index gen.fa
 #bwa mem gen.fa f.fa r.fa -t $CPUS | samtools sort -o ali.bam -@ $CPUS -m $MEM
 #samtools index ali.bam -@ $CPUS
