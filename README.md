@@ -6,9 +6,9 @@ To use a notebook, follow the link to the notebook code then  click on the "Open
 ## Protein structure predictions
 These carry out a protein structure prediction, from input protein sequence through to a download of the predicted structure as a PDB file.
 
-[DiscobaAlphaFold2HMMER](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaAlphaFold2HMMER.ipynb) For prediction of protein structures using ColabFold modified to also include a HMMER search of the Discoba protein sequence database.
+[DiscobaAlphaFold2HMMER](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaAlphaFold2HMMER.ipynb) For prediction of protein structures using ColabFold modified to also include a HMMER search of the Discoba protein sequence database (recommended!).
 
-[DiscobaAlphaFold2MMSeqs2](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaAlphaFold2MMSeqs2.ipynb) For prediction of protein structures using ColabFold modified to also include an MMSeqs2 search of the Discoba protein sequence database.
+[DiscobaAlphaFold2MMSeqs2](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaAlphaFold2MMSeqs2.ipynb) For prediction using ColabFold modified to also include an MMSeqs2 search of the Discoba protein sequence database.
 
 This protein structure prediction pipeline is based on [ColabFold](https://github.com/sokrypton/ColabFold), which uses a MMSeqs2 search of UniRef and environmental sequence databases to make an MSA, then an AlphaFold2 structural prediction.
 
@@ -17,7 +17,7 @@ These generate a multiple sequence alignment, generating an a3m alignment file s
 
 [DiscobaHMMER](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaHMMER.ipynb) For generating an a3m alignment file using a HMMER search of the Discoba protein database.
 
-[DiscobaMMSeqs2](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaMMSeqs2.ipynb) For generating an a3m alignment file using an MMSeqs2 search of the Discoba protein database.
+[DiscobaMMSeqs2](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaMMSeqs2.ipynb) For generating an a3m using an MMSeqs2 search of the Discoba protein database.
 
 ## Discoba database generation
 The [transcriptomes](https://github.com/zephyris/discoba_alphafold/tree/main/transcriptomes) folder contains the code necessary to fetch and build the predicted protein sequences of all Discoba species in the Discoba protein sequence database.
