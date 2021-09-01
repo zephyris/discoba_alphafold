@@ -43,21 +43,29 @@ $VELVET/velveth asm 31 -shortPaired -fasta -separate f.fa r.fa
 $VELVET/velvetg asm
 $VELVET/velvetg asm -cov_cutoff auto -min_contig_lgth 500
 
-##Align reads to the genome to get key stats
-#echo "== Evaluating assembly =="
-#cp asm/contigs.fasta gen.fa
-#bwa index gen.fa
-#bwa mem gen.fa f.fa r.fa -t $CPUS | samtools sort -o ali.bam -@ $CPUS -m $MEM
-#samtools index ali.bam -@ $CPUS
-#INSERTSIZE=$(samtools stats ali.bam | grep "insert size average" | awk -F'\t' '{print $3}')
-#MEANCOV=$(samtools depth -a ali.bam | awk '{sum+=$3} END {print sum/NR}')
-#echo $INSERTSIZE $MEANCOV
-#rm ali*
-#rm gen.fa*
-#echo "== Improve assembly =="
-#$VELVET/velvetg asm -cov_cutoff auto -min_contig_lgth 500 -exp_cov $MEANCOV -ins_length $INSERTSIZE
+#Velvet genome assembly
+echo "== Assembling genome =="
+$VELVET/velveth asm 31 -shortPaired -fasta -separate f.fa r.fa
+$VELVET/velvetg asm
+#Do not run if refining based on measured coverage and insert size
+#$VELVET/velvetg asm -cov_cutoff auto -min_contig_lgth 500
+#Align reads to the genome to get key coverage and insert size stats
+echo "== Evaluating assembly =="
+cp asm/contigs.fa gen.fa
+bwa index gen.fa
+bwa mem gen.fa f.fa r.fa -t $CPUS | samtools sort -o ali.bam -@ $CPUS -m $MEM
+samtools index ali.bam -@ $CPUS
+INSERTSIZE=$(samtools stats ali.bam | grep "insert size average" | awk -F'\t' '{print $3}')
+MEANCOV=$(samtools depth -a ali.bam | awk '{sum+=$3} END {print sum/NR}')
+rm ali*
+rm gen.fa*
+echo $INSERTSIZE $MEANCOV
+THR=$(echo $MEANCOV/4 | bc)
+echo $INSERTSIZE $MEANCOV $THR > asmcov.txt
+echo "== Improve assembly =="
+$VELVET/velvetg asm -cov_cutoff $THR -min_contig_lgth 500 -exp_cov $MEANCOV -ins_length $INSERTSIZE
 
 #Translate
 echo "== Translate transcripts =="
 cp asm/contigs.fa gen.fa
-nodejs ../identifyOrfs.js gen.fa > pep.fa
+nodejs --max_old_space_size=4096 ../identifyOrfs.js gen.fa > pep.fa
