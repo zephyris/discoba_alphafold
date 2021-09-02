@@ -3,10 +3,16 @@ These Colaboratory notebooks are ideal for predicting structures of _Trypanosoma
 
 To use a notebook, follow the link to the notebook code then click on the "Open in Colab" badge to run the notebook in Google Colab.
 
+## Get started quickly!
+**[Go here](https://colab.research.google.com/github/zephyris/discoba_alphafold/blob/main/DiscobaAlphaFold2HMMER.ipynb)** to carry out a protein structure prediction.
+Enter your protein sequence (**query_sequence**) and name (**jobname**) then press <kbd>Ctrl</kbd> + <kbd>F9</kbd> or select `Runtime` > `Run All`. It will probably take a couple of hours, depending on protein length.
+
+You need to make sure that Google Colab is using GPU hardware acceleration. Go to `Runtime` > `Change runtime type` and make sure GPU is selected for Hardware accelerator. If you get an error you have probably run out of GPU memory: try predicting just part of your protein.
+
 ## Protein structure predictions
 These carry out a protein structure prediction, from input protein sequence through to a download of the predicted structure as a PDB file.
 
-[DiscobaAlphaFold2HMMER](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaAlphaFold2HMMER.ipynb): For prediction of protein structures using ColabFold modified to also include a HMMER search of the Discoba protein sequence database (**recommended!**).
+[DiscobaAlphaFold2HMMER](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaAlphaFold2HMMER.ipynb): For prediction of protein structures using ColabFold modified to also include a HMMER search of the Discoba protein sequence database **(recommended!)**.
 
 [DiscobaAlphaFold2MMSeqs2](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaAlphaFold2MMSeqs2.ipynb): For prediction using ColabFold modified to also include an MMSeqs2 search of the Discoba protein sequence database.
 
