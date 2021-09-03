@@ -31,3 +31,13 @@ Clone the repository, then run fetchAll.sh to build the entire database. This wi
 
 ## Discoba database
 The complete Discoba protein sequence database is currently available for download form [WheelerLab.net](http://wheelerlab.net): [discoba.fasta.gz](http://wheelerlab.net/discoba.fasta.gz) and version information in [discobaStats.txt](http://wheelerlab.net/discobaStats.txt). Once stable, it will likely be moved to Zenodo.
+
+### Acknowledgments
+This work builds on the excellent [ColabFold](https://github.com/sokrypton/ColabFold) and would not be possible without the work by Sergey Ovchinnikov (@sokrypton), Milot Mirdita (@milot_mirdita) and Martin Steinegger (@thesteinegger).
+
+### Referencing
+Wheeler RJ. "A resource for improved predictions of _Trypanosoma_ and _Leishmania_ protein three-dimensional structure"
+_bioRxiv_, doi:&nbsp;[10.1101/2021.09.02.458674](https://www.biorxiv.org/content/10.1101/2021.09.02.458674v1) (2021)
+
+Mirdita M, Ovchinnikov S and Steinegger M. "ColabFold - Making protein folding accessible to all."
+_bioRxiv_, doi:&nbsp;[10.1101/2021.08.15.456425](https://www.biorxiv.org/content/10.1101/2021.08.15.456425v1) (2021)
