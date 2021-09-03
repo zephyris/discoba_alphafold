@@ -45,10 +45,9 @@ $VELVET/velvetg asm -cov_cutoff auto -min_contig_lgth 500
 
 #Velvet genome assembly
 echo "== Assembling genome =="
+MINCONTIGLENGTH=500
 $VELVET/velveth asm 31 -shortPaired -fasta -separate f.fa r.fa
-$VELVET/velvetg asm
-#Do not run if refining based on measured coverage and insert size
-#$VELVET/velvetg asm -cov_cutoff auto -min_contig_lgth 500
+$VELVET/velvetg asm -cov_cutoff auto -min_contig_lgth $MINCONTIGLENGTH
 #Align reads to the genome to get key coverage and insert size stats
 echo "== Evaluating assembly =="
 cp asm/contigs.fa gen.fa
@@ -63,7 +62,7 @@ echo $INSERTSIZE $MEANCOV
 THR=$(echo $MEANCOV/4 | bc)
 echo $INSERTSIZE $MEANCOV $THR > asmcov.txt
 echo "== Improve assembly =="
-$VELVET/velvetg asm -cov_cutoff $THR -min_contig_lgth 500 -exp_cov $MEANCOV -ins_length $INSERTSIZE
+$VELVET/velvetg asm -cov_cutoff $THR -min_contig_lgth $MINCONTIGLENGTH -exp_cov $MEANCOV -ins_length $INSERTSIZE
 
 #Translate
 echo "== Translate transcripts =="
