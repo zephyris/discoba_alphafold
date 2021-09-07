@@ -15,7 +15,8 @@ for i in range(len(lines)):
 	scores.append(float(data[2]))
 
 offset = 0
-while len(residues) > max_length:
+# Allow 10% over-length on final section
+while len(residues) > max_length * 1.1:
 	max_score = max(scores[int(max_length/2):max_length])
 	index = scores[int(max_length/2):max_length].index(max_score) + int(max_length/2)
 	file = open(f"{name}_{offset+1}-{offset+index}.fasta", "w")
