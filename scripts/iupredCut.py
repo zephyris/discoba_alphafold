@@ -18,8 +18,8 @@ offset = 0
 while len(residues) > max_length:
 	max_score = max(scores[int(max_length/2):max_length])
 	index = scores[int(max_length/2):max_length].index(max_score) + int(max_length/2)
-	file = open(f"{name}_{offset+1}-{index}.fasta", "w")
-	file.write(f">{path_tail}_{offset+1}-{index}\n")
+	file = open(f"{name}_{offset+1}-{offset+index}.fasta", "w")
+	file.write(f">{path_tail}_{offset+1}-{offset+index}\n")
 	file.write(f"{''.join(residues[:index])}\n")
 	file.close()
 	offset = offset + index
