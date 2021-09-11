@@ -29,8 +29,8 @@ while len(residues) > max_length * 1.1:
 	# Check cut region, and write spanning 'patch' if iupred score is too low
 	min_score_patch = min(scores[max(index - 30, 0):min(index, len(residues))])
 	if min_score_patch < patch_thr:
-		patch_start = max(index - max_length / 4, 0)
-		patch_end = in(index + max_length / 4, len(residues))
+		patch_start = int(max(index - max_length / 4, 0))
+		patch_end = int(min(index + max_length / 4, len(residues)))
 		file = open(f"{name}_{patch_start+1}-{patch_end}.fasta", "w")
 		file.write(f">{path_tail}_{patch_start+1}-{patch_end}\n")
 		file.write(f"{''.join(residues_raw[patch_start:patch_end])}\n")
