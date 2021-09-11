@@ -3,7 +3,7 @@ import os.path as path
 
 max_length = int(sys.argv[2]) # Max length of sequence, must be even
 patch_size = 30 # Region around cuts in which to check score
-patch_thr = 0.5 # Score threshold for making patch
+patch_thr = 0.25 # Score threshold for making patch
 name = sys.argv[1][:-len(".fasta.iupred")]
 path_head, path_tail = path.split(name)
 file = open(sys.argv[1])
