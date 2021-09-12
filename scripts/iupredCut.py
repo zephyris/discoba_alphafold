@@ -31,9 +31,9 @@ while len(residues) > max_length * 1.1:
 	if min_score_patch < patch_thr:
 		patch_start = int(max(index - max_length / 4, 0))
 		patch_end = int(min(index + max_length / 4, len(residues)))
-		file = open(f"{name}_{patch_start+1}-{patch_end}.fasta", "w")
-		file.write(f">{path_tail}_{patch_start+1}-{patch_end}\n")
-		file.write(f"{''.join(residues_raw[patch_start:patch_end])}\n")
+		file = open(f"{name}_{offset + patch_start+1}-{offset + patch_end}.fasta", "w")
+		file.write(f">{path_tail}_{offset + patch_start+1}-{offset + patch_end}\n")
+		file.write(f"{''.join(residues_raw[offset + patch_start:offset + patch_end])}\n")
 		file.close()
 	# Update offsets for next iteration
 	offset = offset + index
