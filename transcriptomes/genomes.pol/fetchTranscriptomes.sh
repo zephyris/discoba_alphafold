@@ -44,6 +44,7 @@ polishPred() {
       #Only continue if pep.fa is not empty
       cp pep.fa ../fasta/$1_$3.fasta
       rm f.fq r.fq ali.bam ali.bam.bai ref.fa*
+      rm -r pi
     fi
     cd ..
   fi

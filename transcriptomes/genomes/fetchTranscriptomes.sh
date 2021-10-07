@@ -39,7 +39,9 @@ buildGenomeTrans() {
     if [ -s pep.fa ]
     then
       sed "s/>NODE/>$1/g" pep.fa > ../fasta/$1.fasta
-      rm *.fq f.fa r.fa
+      rm *.fq f.fa r.fa *.fastq *.log
+      rm -r asm
+      rm -r tgl
     fi
     cd ..
   fi
@@ -77,8 +79,8 @@ fetchSRARead SRR2057750 Trypanosoma_cruzi_ATCC_30160 PRJNA284532
 fetchSRARead SRR2057802 Trypanosoma_cruzi_ATCC_30160 PRJNA284532
 
 #PRJNA59941
-fetchSRARead SRR547646 Trypanosoma_cruzi_JR_cl4 PRJNA59941
-fetchSRARead SRR547643 Trypanosoma_cruzi_JR_cl4 PRJNA59941
+#fetchSRARead SRR547646 Trypanosoma_cruzi_JR_cl4 PRJNA59941
+#fetchSRARead SRR547643 Trypanosoma_cruzi_JR_cl4 PRJNA59941
 
 #PRJNA284534
 fetchSRARead SRR2057752 Trypanosoma_cruzi_TRYCC_1522 PRJNA284534
@@ -88,8 +90,8 @@ fetchSRARead SRR2057791 Trypanosoma_cruzi_TRYCC_1522 PRJNA284534
 fetchSRARead SRR2057774 Trypanosoma_cruzi_TRYCC_1522 PRJNA284534
 
 #PRJNA169675
-fetchSRARead SRR831221 Trypanosoma_cruzi_Tula_cl2 PRJNA169675
-fetchSRARead SRR831189 Trypanosoma_cruzi_Tula_cl2 PRJNA169675
+#fetchSRARead SRR831221 Trypanosoma_cruzi_Tula_cl2 PRJNA169675
+#fetchSRARead SRR831189 Trypanosoma_cruzi_Tula_cl2 PRJNA169675
 
 #Do builds
 buildGenomeTrans Leishmania_deanei
@@ -108,9 +110,9 @@ buildGenomeTrans Kinetoplastid_HUUFS14
 buildGenomeTrans Trypanosomatidae_sp_Fi-14
 buildGenomeTrans Trypanosoma_caninum
 buildGenomeTrans Trypanosoma_cruzi_ATCC_30160
-buildGenomeTrans Trypanosoma_cruzi_JR_cl4
+#buildGenomeTrans Trypanosoma_cruzi_JR_cl4
 buildGenomeTrans Trypanosoma_cruzi_TRYCC_1522
-buildGenomeTrans Trypanosoma_cruzi_Tula_cl2
+#buildGenomeTrans Trypanosoma_cruzi_Tula_cl2
 
 ##Genomes also with transcriptomic data (ie. duplicate)
 #fetchSRARead SRR5998381 Diplonema_ambulator

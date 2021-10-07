@@ -28,7 +28,12 @@ buildTrans() {
     cp ../buildTranscriptome.sh buildTranscriptome.sh
     bash buildTranscriptome.sh
     sed "s/>TRINITY/>$1/g" trans.nonred.fasta.transdecoder.pep > ../fasta/$1.fasta
-    rm *.fastq *.fq
+    rm *.fastq *.fq *.cmds *.log *.fastq.gz tmp_*
+    rm trans.nonred.fasta.*
+    rm -r tgl
+    rm -r trans.nonred.fasta.transdecoder_dir*
+    rm -r trinity
+    rm -r trinitySub
     cd ..
   fi
 }
@@ -129,20 +134,20 @@ CURRENTDATE=$(date)
 echo "DDBJ accessed $CURRENTDATE" >> accessdate.txt
 curl http://www.goeker.org/mg/scripts/gbk2fas.sed -o gbk2fas.sed
 
-#sudo apt-get install -y libany-uri-escape-perl
-#git clone https://github.com/TransDecoder/TransDecoder
+sudo apt-get install -y libany-uri-escape-perl
+git clone https://github.com/TransDecoder/TransDecoder
 
 fetchDDBJ() {
   echo "transcriptome,NCBI TSA,$1,$3,$2,transdecoder" >> list.csv
   curl ftp://ftp.ddbj.nig.ac.jp/ddbj_database/tsa/${1:0:2}/$1.gz -o $2.gz
-  gzip -d $2.gz
-  ./gbk2fas.sed $2 > $2.fasta
-  TransDecoder/TransDecoder.LongOrfs -t $2.fasta
-  TransDecoder/TransDecoder.Predict -t $2.fasta
-  mv $2.fasta.transdecoder.pep fasta/$2.fasta
-  rm -r $2.fasta.*
-  rm $2 $2.fasta
-  rm pipeliner.*
+  #gzip -d $2.gz
+  #./gbk2fas.sed $2 > $2.fasta
+  #TransDecoder/TransDecoder.LongOrfs -t $2.fasta
+  #TransDecoder/TransDecoder.Predict -t $2.fasta
+  #mv $2.fasta.transdecoder.pep fasta/$2.fasta
+  #rm -r $2.fasta.*
+  #rm $2 $2.fasta
+  #rm pipeliner.*
 }
 
 fetchDDBJ GHOA Hemistasia_phaeocysticola PRJNA549599
@@ -154,7 +159,7 @@ fetchDDBJ GGOE Euglena_longa PRJNA471257
 fetchDDBJ GECH Pharyngomonas_kirbyi PRJNA301448
 fetchDDBJ HBGD Percolomonas_cosmopolitus PRJEB37117 #AE-1 ATCC 50343 
 fetchDDBJ GEFR Euglena_gracilis_2 PRJNA298469
-fetchDDBJ LQMU Euglena_gracilis_var_Bacillaris PRJNA294935
+#fetchDDBJ LQMU Euglena_gracilis_var_Bacillaris PRJNA294935
 fetchDDBJ GFCF Trypanoplasma_borreli_DieterSteinhagen PRJNA354696
 fetchDDBJ HBGD Percolomonas_cosmopolitus_WS PRJEB37117
 
