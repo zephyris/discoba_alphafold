@@ -140,18 +140,18 @@ git clone https://github.com/TransDecoder/TransDecoder
 fetchDDBJ() {
   echo "transcriptome,NCBI TSA,$1,$3,$2,transdecoder" >> list.csv
   curl ftp://ftp.ddbj.nig.ac.jp/ddbj_database/tsa/${1:0:2}/$1.gz -o $2.gz
-  #gzip -d $2.gz
-  #./gbk2fas.sed $2 > $2.fasta
-  #TransDecoder/TransDecoder.LongOrfs -t $2.fasta
-  #TransDecoder/TransDecoder.Predict -t $2.fasta
-  #mv $2.fasta.transdecoder.pep fasta/$2.fasta
-  #rm -r $2.fasta.*
-  #rm $2 $2.fasta
-  #rm pipeliner.*
+  gzip -d $2.gz
+  ./gbk2fas.sed $2 > $2.fasta
+  TransDecoder/TransDecoder.LongOrfs -t $2.fasta
+  TransDecoder/TransDecoder.Predict -t $2.fasta
+  mv $2.fasta.transdecoder.pep fasta/$2.fasta
+  rm -r $2.fasta.*
+  rm $2 $2.fasta
+  rm pipeliner.*
 }
 
 fetchDDBJ GHOA Hemistasia_phaeocysticola PRJNA549599
-fetchDDBJ GHOB Trypanoplasma_borreli PRJNA549827 #Tt-JH 
+fetchDDBJ GHOB Trypanoplasma_borreli_Tt-JH PRJNA549827 #Tt-JH 
 fetchDDBJ GJGC Rhabdomonas_costata PRJNA550357
 fetchDDBJ GFCF Trypanoplasma_borreli PRJNA354696
 fetchDDBJ GDJR Euglena_gracilis PRJNA289402
