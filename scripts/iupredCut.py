@@ -28,6 +28,8 @@ while len(residues) > max_length:
 	file.close()
 	# Check cut region, and write spanning 'patch' if iupred score is too low
 	min_score_patch = min(scores[max(index - 30, 0):min(index, len(residues))])
+	# Force the patch to always be used
+	min_score_patch = patch_thr
 	if min_score_patch < patch_thr:
 		patch_start = int(max(index - patch_length, 0))
 		patch_end = int(min(index + patch_length, len(residues)))
