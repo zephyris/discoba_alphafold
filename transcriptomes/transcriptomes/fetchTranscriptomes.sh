@@ -1,3 +1,6 @@
+#NCBI Sequence Read Archive search for new data
+#https://www.ncbi.nlm.nih.gov/sra/?term=((txid2611352%5BOrganism%3Aexp%5D)+AND+(%222021%2F01%2F01%22%5BModification+Date%5D+%3A+%223000%22%5BModification+Date%5D))+NOT+(txid5691%5BOrganism%3Aexp%5D)+NOT+(txid5693%5BOrganism%3Aexp%5D)+NOT+(txid5664%5BOrganism%3Aexp%5D)+NOT+(txid5665%5BOrganism%3Aexp%5D)+NOT+(txid5671%5BOrganism%3Aexp%5D)+NOT+(txid5661%5BOrganism%3Aexp%5D)
+
 rm accessdate.txt
 rm list.csv
 rm -r fastaTidy
