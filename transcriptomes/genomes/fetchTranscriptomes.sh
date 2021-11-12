@@ -1,3 +1,6 @@
+#Genome search on NCBI, by date
+#https://www.ncbi.nlm.nih.gov/genome?term=(txid2611352%5BOrganism%3Aexp%5D)%20AND%20(%222021%2F01%2F01%22%5BCreate%20Date%5D%20%3A%20%223000%22%5BCreate%20Date%5D)
+
 rm accessdate.txt
 rm list.csv
 mkdir genomeFasta
@@ -216,6 +219,8 @@ fetchNCBI GCA_003664525.1_ASM366452v1 Leishmania_guyanensis PRJNA484340
 fetchNCBI GCA_003664395.1_CDC_Llain_216-34_v1 Leishmania_lainsoni PRJNA484340
 #fetchNCBI GCA_018683835.1_OSU_Pdea_TCC258_v1 Porcisia_deanei PRJNA680237
 fetchNCBI GCA_000333855.2_Endotrypanum_monterogeii-LV88-1.0.3 Endotrypanum_monterogeii PRJNA165953
+fetchNCBI GCA_016618085.1_ASM1661808v1 Neovahlkampfia_damariscottae PRJNA549687
+fetchNCBI GCA_019695575.1_ASM1969557v1 Angomonas_ambiguus PRJNA673871
 
 #TriTrypDB
 KINETOVERSION=$(curl https://tritrypdb.org/common/downloads/Current_Release/Build_number)
