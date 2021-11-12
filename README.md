@@ -36,12 +36,14 @@ The complete Discoba protein sequence database is currently available for downlo
 This work builds on the excellent [ColabFold](https://github.com/sokrypton/ColabFold) and would not be possible without the work by Sergey Ovchinnikov (@sokrypton), Milot Mirdita (@milot_mirdita) and Martin Steinegger (@thesteinegger).
 
 ### Referencing
-If you use alignments made using the Discoba database please cite:
+If you use structure predictions made using this resource, please cite:
+
 Wheeler RJ. "A resource for improved predictions of Trypanosoma and Leishmania protein three-dimensional structure"
 _PLoS One_, doi:&nbsp;[10.1371/journal.pone.0259871](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0259871) (2021)
 
-If you use structure predictions please also cite:
 Mirdita M, Ovchinnikov S and Steinegger M. "ColabFold - Making protein folding accessible to all."
 _bioRxiv_, doi:&nbsp;[10.1101/2021.08.15.456425](https://www.biorxiv.org/content/10.1101/2021.08.15.456425v1) (2021)
 
 Please also cite the relevant AlphaFold and database references, see ColabFold documentation for full information.
+
+If you only use the multiple sequence alignments then please just cite Wheeler 2021.
