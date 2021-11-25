@@ -40,7 +40,7 @@ cat genomes.pol/list.csv >> list.csv
 
 #Clean sequences
 echo "fasta,count,totalLength,averageLength,proportionStarts,proportionEarlyStops,length25th,length50th,length75th" > stats.csv
-cd discoba
+cd fasta
 for fasta in *.fasta; do
   echo $fasta
   nodejs ../discobaStats.js $fasta >> ../stats.csv
@@ -60,11 +60,6 @@ echo "Total number of sequences:" >> stats.txt
 awk -F',' '{sum+=$2;}END{print sum;}' stats.csv >> stats.txt
 echo "Total length of sequences:" >> stats.txt
 awk -F',' '{sum+=$3;}END{print sum;}' stats.csv >> stats.txt
-
-if [ ! -d discobaRenamed ]
-then
-  mkdir discobaRenamed
-fi
 
 #Rename all fasta entries to sequentially numbered prefixed by isolate name
 cd discobaTidy
