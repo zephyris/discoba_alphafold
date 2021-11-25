@@ -44,7 +44,7 @@ cd fasta
 for fasta in *.fasta; do
   echo $fasta
   nodejs ../discobaStats.js $fasta >> ../stats.csv
-  cut -d " " -f1 $fasta | sed "s/*//g" | sed -e '/^[^>]/s/[^GALMFWKQESPVICYHRNDTgalmfwkqespvicyhrndt]/X/g' > ../discobaTidy/$fasta
+  cut -d " " -f1 $fasta | sed "s/*//g" | sed -e '/^[^>]/s/[^GALMFWKQESPVICYHRNDTgalmfwkqespvicyhrndt]/X/g' > ../fastaTidy/$fasta
 done
 cd ..
 
@@ -62,15 +62,15 @@ echo "Total length of sequences:" >> stats.txt
 awk -F',' '{sum+=$3;}END{print sum;}' stats.csv >> stats.txt
 
 #Rename all fasta entries to sequentially numbered prefixed by isolate name
-cd discobaTidy
+cd fastaTidy
 for fasta in *.fasta; do
   filename=$(basename -- "${fasta}")
   filename="${filename%.*}"
   echo $filename
-  awk -v a=$filename '/^>/{print ">"a"_P" ++i; next}{print}' < $fasta > ../discobaRenamed/$fasta
+  awk -v a=$filename '/^>/{print ">"a"_P" ++i; next}{print}' < $fasta > ../fastaRenamed/$fasta
 done
 cd ..
 
 #Concatenate and compress
-cat discobaRenamed/*.fasta > discoba.fasta
+cat fastaRenamed/*.fasta > discoba.fasta
 gzip -9 -f -k discoba.fasta
