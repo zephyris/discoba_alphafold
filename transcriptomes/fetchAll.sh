@@ -53,9 +53,9 @@ cd ..
 echo "Database statistics" > stats.txt
 echo "===================" >> stats.txt
 echo "Last modified:" > stats.txt
-stat $(ls -t discoba/*.fasta | head -n 1) | grep "Modify" | awk '{print($2,$3)}' >> stats.txt
+stat $(ls -t fasta/*.fasta | head -n 1) | grep "Modify" | awk '{print($2,$3)}' >> stats.txt
 echo "Number of species/samples:" >> stats.txt
-ls -l discoba/*.fasta | wc -l >> stats.txt
+ls -l fasta/*.fasta | wc -l >> stats.txt
 echo "Total number of sequences:" >> stats.txt
 awk -F',' '{sum+=$2;}END{print sum;}' stats.csv >> stats.txt
 echo "Total length of sequences:" >> stats.txt
