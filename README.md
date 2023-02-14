@@ -32,7 +32,7 @@ The [transcriptomes](https://github.com/zephyris/discoba_alphafold/tree/main/tra
 Clone the repository, then run fetchAll.sh to build the entire database. This will take some time... Requires curl, gzip, perl, python, nodejs, cutadapt, jellyfish, bowtie2, bwa and samtools. Fetches and builds trinity, which requires autoconf, libbz2-dev and liblzma-dev. Fetches and builds cdhit which _should_ require no further dependencies. Other tools are either scripts or fetched as precompiled packages.
 
 ## Discoba database
-The complete Discoba protein sequence database is currently available for download from [WheelerLab.net](http://wheelerlab.net): [discoba.fasta.gz](http://wheelerlab.net/discoba.fasta.gz) and version information in [discobaStats.txt](http://wheelerlab.net/discobaStats.txt). Once stable, it will likely be moved to Zenodo.
+The complete Discoba protein sequence database is  available for download from [Zenodo.org](https://zenodo.org/record/5682928): [discoba.fasta.gz](https://zenodo.org/record/5682928/files/discoba.fasta.gz?download=1) and version information in [discobaStats.txt](https://zenodo.org/record/5682928/files/discobaStats.txt?download=1). A mirrored copy is available via [WheelerLab.net](http://wheelerlab.net), which may be faster to download depending on where you are in the world: [discoba.fasta.gz](http://wheelerlab.net/discoba.fasta.gz).
 
 ### Acknowledgments
 This work builds on the excellent [ColabFold](https://github.com/sokrypton/ColabFold) and would not be possible without the work by Sergey Ovchinnikov (@sokrypton), Milot Mirdita (@milot_mirdita) and Martin Steinegger (@thesteinegger).
