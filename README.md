@@ -3,22 +3,10 @@ These Colaboratory notebooks are ideal for predicting structures of _Trypanosoma
 
 To use a notebook, follow the link to the notebook code then click on the "Open in Colab" badge to run the notebook in Google Colab.
 
-## Get started quickly!
-**[Go here](https://colab.research.google.com/github/zephyris/discoba_alphafold/blob/main/DiscobaAlphaFold2HMMERv2.ipynb)** to carry out a protein structure prediction.
-Enter your protein sequence (**query_sequence**) and name (**jobname**) then press <kbd>Ctrl</kbd> + <kbd>F9</kbd> or select `Runtime` > `Run All`. It will probably take a couple of hours, depending on protein length.
+## Get started
+**[Go here](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaHMMER.ipynb)** to to generate an a3m alignment file using a HMMER search of the Discoba protein database, then [use the official CoabFold notebook](https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb) and upload the a3m file as a custom alignment to do your structure prediction.
 
-You need to make sure that Google Colab is using GPU hardware acceleration. Go to `Runtime` > `Change runtime type` and make sure GPU is selected for Hardware accelerator. If you get an error you have probably run out of GPU memory: try predicting just part of your protein.
-
-## Protein structure predictions
-These carry out a protein structure prediction, from input protein sequence through to a download of the predicted structure as a PDB file.
-
-[DiscobaAlphaFold2HMMERv2](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaAlphaFold2HMMERv2.ipynb): Experimental updated version for prediction of protein structures using the latest version of ColabFold modified to also include a HMMER search of the Discoba protein sequence database **(recommended!)**.
-
-~~[DiscobaAlphaFold2HMMER](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaAlphaFold2HMMER.ipynb): For prediction of protein structures using ColabFold modified to also include a HMMER search of the Discoba protein sequence database~~
-
-~~[DiscobaAlphaFold2MMSeqs2](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaAlphaFold2MMSeqs2.ipynb): For prediction using ColabFold modified to also include an MMSeqs2 search of the Discoba protein sequence database.~~
-
-These protein structure predictions are based on [ColabFold](https://github.com/sokrypton/ColabFold), which uses a MMSeqs2 search of UniRef and environmental sequence databases to make an MSA, then an AlphaFold2 structural prediction.
+Note that this generates an alignment based only on discoba sequences, not full eukaryotic diversity.
 
 ## Multiple sequence alignment
 These generate a multiple sequence alignment, generating an a3m alignment file suitable for use for use in other protein structure prediction pipelines.
@@ -33,6 +21,17 @@ Clone the repository, then run fetchAll.sh to build the entire database. This wi
 
 ## Discoba database
 The complete Discoba protein sequence database is  available for download from [Zenodo.org](https://zenodo.org/record/5682928): [discoba.fasta.gz](https://zenodo.org/record/5682928/files/discoba.fasta.gz?download=1) and version information in [discobaStats.txt](https://zenodo.org/record/5682928/files/discobaStats.txt?download=1). A mirrored copy is available via [WheelerLab.net](http://wheelerlab.net), which may be faster to download depending on where you are in the world: [discoba.fasta.gz](http://wheelerlab.net/discoba.fasta.gz).
+
+## Protein structure predictions
+Direct protein structure notebooks have been depreciated. The combination of Google Colab default package changes and ColabFold API changes make this too much of a moving target to effectively maintain.
+
+~~[DiscobaAlphaFold2HMMERv2](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaAlphaFold2HMMERv2.ipynb): Experimental updated version for prediction of protein structures using the latest version of ColabFold modified to also include a HMMER search of the Discoba protein sequence database **(recommended!)**.~~
+
+~~[DiscobaAlphaFold2HMMER](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaAlphaFold2HMMER.ipynb): For prediction of protein structures using ColabFold modified to also include a HMMER search of the Discoba protein sequence database~~
+
+~~[DiscobaAlphaFold2MMSeqs2](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaAlphaFold2MMSeqs2.ipynb): For prediction using ColabFold modified to also include an MMSeqs2 search of the Discoba protein sequence database.~~
+
+~~These protein structure predictions are based on [ColabFold](https://github.com/sokrypton/ColabFold), which uses a MMSeqs2 search of UniRef and environmental sequence databases to make an MSA, then an AlphaFold2 structural prediction.~~
 
 ### Acknowledgments
 This work builds on the excellent [ColabFold](https://github.com/sokrypton/ColabFold) and would not be possible without the work by Sergey Ovchinnikov (@sokrypton), Milot Mirdita (@milot_mirdita) and Martin Steinegger (@thesteinegger).
