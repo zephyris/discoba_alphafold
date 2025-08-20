@@ -4,7 +4,7 @@ These Colaboratory notebooks are ideal for predicting structures of _Trypanosoma
 To use a notebook, follow the link to the notebook code then click on the "Open in Colab" badge to run the notebook in Google Colab.
 
 ## Get started
-**[Go here](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaAlphaFold2HMMER3.ipynb)** to carry out a protein structure prediction.
+**[Go here](https://github.com/zephyris/discoba_alphafold/blob/main/DiscobaAlphaFold2HMMERv3.ipynb)** to carry out a protein structure prediction.
 Enter your protein sequence (**query_sequence**) and name (**jobname**) then press <kbd>Ctrl</kbd> + <kbd>F9</kbd> or select `Runtime` > `Run All`. It will probably take a couple of hours, depending on protein length.
 
 You need to make sure that Google Colab is using GPU hardware acceleration. Go to `Runtime` > `Change runtime type` and make sure GPU is selected for Hardware accelerator. If you get an error you have probably run out of GPU memory: try predicting just part of your protein.
